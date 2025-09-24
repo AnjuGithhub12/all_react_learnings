@@ -1,8 +1,15 @@
-
+import Chai from './Prep.jsx'
 
 function App() {
   return (
-    <h1>hey react</h1>
+    <>
+      <Chai />
+      <p>lorem basic react
+
+      </p>
+
+       </>
+    
 
   );
 }
