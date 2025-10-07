@@ -15,6 +15,13 @@ export default function Textform(props) {
        
         console.log(newtext);
     }
+    const handlelowclick = () => {
+      console.log("uppercase was clicked " + text);
+      let newtext = text.toLowerCase();
+      setText(newtext);
+
+      console.log(newtext);
+    };
     const handleOnChange = (dvent) => {
       setText(dvent.target.value); // Moved below
 
@@ -30,14 +37,23 @@ export default function Textform(props) {
   //  text="fmkemkdf"//wrong way to change the state
    // setText("fmdkfmdkmfk");
   return ( 
-
-      <form >
+<>
+      <form className="container">
           <h1>{props.heading}</h1>
           <textarea id="textareainput"className="form-control form-control-lg" value={text} onChange={handleOnChange} placeholder=".form-control-lg" aria-label=".form-control-lg example"row='10'>
           </textarea>
-          <button type='button' className='btn btn-primary my-3' onClick={handleclick}>convert to uppercase</button>
-</form>
-      
+          <button type='button' className='btn btn-primary mx-2 my-1' onClick={handleclick}>convert to uppercase</button>
+          <button type='button' className='btn btn-primary mx-2 my-1' onClick={handlelowclick}>convert to lowercase</button>
+          </form>
+          <div className="container my-13">
+              <h1>your text summary</h1>
+              <p>{text.split(" ").length}words and {text.length}characters</p>
+            <p>{0.008 * text.split(" ").length} minutes to read words</p>
+              <h2>preview</h2>
+              <p>{text}</p>
+
+          </div>
+      </>
   );
 }
 
