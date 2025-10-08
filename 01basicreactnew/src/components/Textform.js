@@ -7,6 +7,7 @@ import { set } from 'date-fns';
 //useState is a hook
 //hooks are special function which can be used to add state and other react features to functional components
 export default function Textform(props) {
+    const [color1,setColor]=useState('black');
     const handleclick = () => {
           
         console.log("uppercase was clicked " + text);
@@ -22,6 +23,17 @@ export default function Textform(props) {
 
       console.log(newtext);
     };
+    const handlecolor = () => {
+        console.log("color change was clicked " + text);
+        setColor("pink");
+    }
+    const handleclear = () => {
+     
+        let newtext = "";
+      setText(newtext);
+
+      console.log(newtext);
+    };
     const handleOnChange = (dvent) => {
       setText(dvent.target.value); // Moved below
 
@@ -33,17 +45,19 @@ export default function Textform(props) {
       console.log("on change");
     };
 
-    const [text, setText] = useState("enter text here");
+    const [text, setText] = useState("");
   //  text="fmkemkdf"//wrong way to change the state
    // setText("fmdkfmdkmfk");
   return ( 
 <>
       <form className="container">
           <h1>{props.heading}</h1>
-          <textarea id="textareainput"className="form-control form-control-lg" value={text} onChange={handleOnChange} placeholder=".form-control-lg" aria-label=".form-control-lg example"row='10'>
+              <textarea id="textareainput" className="form-control form-control-lg" style={{ color: color1 }} value={text} onChange={handleOnChange} aria-label=".form-control-lg example"row='10'>
           </textarea>
           <button type='button' className='btn btn-primary mx-2 my-1' onClick={handleclick}>convert to uppercase</button>
           <button type='button' className='btn btn-primary mx-2 my-1' onClick={handlelowclick}>convert to lowercase</button>
+          <button type='button' className='btn btn-primary mx-2 my-1' onClick={handleclear}>clear text</button> 
+          <button type='button' className='btn btn-primary mx-2 my-1' onClick={handlecolor}>change color to pink</button> 
           </form>
           <div className="container my-13">
               <h1>your text summary</h1>
